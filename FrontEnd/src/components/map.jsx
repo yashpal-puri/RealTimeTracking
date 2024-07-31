@@ -14,8 +14,6 @@ const UpdateMapCenter = ({ position }) => {
     return null;
 }
 
-const getRandomOffset = () => (Math.random() - 0.5) * 0.02;
-
 const Map = () => {
 
     const [users, setUsers] = useState([]);
@@ -28,9 +26,7 @@ const Map = () => {
             watchId = navigator.geolocation.watchPosition(
                 (position) => {
                     const { latitude, longitude } = position.coords;
-                    const randomLatitude = latitude + getRandomOffset();
-                    const randomLongitude = longitude + getRandomOffset();
-                    socket.emit('joinMapRequest', { latitude: randomLatitude, longitude: randomLongitude }, (arg) => {
+                    socket.emit('joinMapRequest', { latitude: latitude, longitude: longitude }, (arg) => {
                     // socket.emit('joinMapRequest', { latitude, longitude }, (arg) => {
                         console.log(arg);
                     });
