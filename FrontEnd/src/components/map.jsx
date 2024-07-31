@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client'
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
+import L from 'leaflet';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
 const socket = io('https://realtimetracking.onrender.com');
 
@@ -19,6 +22,16 @@ const Map = () => {
     const [users, setUsers] = useState([]);
     const mapRef = useRef();
     const [position, setPosition] = useState([51.505, -0.09])
+
+    const defaultIcon = L.icon({
+        iconUrl: markerIcon,
+        shadowUrl: markerShadow,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    L.Marker.prototype.options.icon = defaultIcon;
 
     useEffect(() => {
         let watchId;
