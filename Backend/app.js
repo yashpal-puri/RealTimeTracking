@@ -8,7 +8,7 @@ const io = new Server(server,{
     cors: {
         origin: [
             "http://localhost:5173",
-            "https://your-project.vercel.app"
+            "https://realtimetracking-yashpalpuri.vercel.app/"
         ],
         methods: ["GET", "POST"]
     }

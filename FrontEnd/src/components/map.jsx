@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 
-const socket = io('http://localhost:3000');
+const socket = io('https://realtimetracking.onrender.com');
 
 
 const UpdateMapCenter = ({ position }) => {
